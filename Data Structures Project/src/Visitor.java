@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.time.LocalDateTime;  // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter;  // Import the DateTimeFormatter class
 
@@ -10,6 +11,7 @@ public class Visitor extends Users{
 	private String PassportNumber;
 	
 	private static Scanner input = new Scanner(System.in);
+	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000);
 	static LocalDateTime myDateObj = LocalDateTime.now();  
     static DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
     static String formattedDate = myDateObj.format(myFormatObj);
@@ -47,7 +49,7 @@ public class Visitor extends Users{
 	public void RequestAttractionDetails() {
 		PlaceLinkedList pl_list = new PlaceLinkedList();
 		Place place = new Place();
-		int requestID=0;;
+		int requestID = ID_GENERATOR.getAndIncrement();
 		System.out.println("______________________________________________________________________"+"\n");
 		System.out.println("Today's Date and Time: "+ formattedDate+"\n"); 
 		System.out.println("\t\t"+"****The Di Good Place Dem!****"+"\n");
